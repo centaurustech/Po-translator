@@ -12,7 +12,7 @@ A futuro, pienso agregarle una interfaz para que cualquier usuario pueda utiliza
 
 En principio cuenta con dos scripts. El primero **[extraer.php]**, encargado de extraer las frases a ser traducidas del archivo .po a un archivo de texto linea por linea [file_name]_detached.txt, dicho archivo deberá ser traducido con Google, a la par, genera un archivo [file_name]_opt.po (una versión optimizada para poder extraer frases multilineas). El resultado de la traducción de Google deberá ser grabado en otro archivo con nombre [file_name]_traducido.txt para luego ser procesado y combinado con el script **[combinar.php]**. En el proceso combinatorio se utiliza el archivo [file_name]_opt.po y el [file_name]_traducido.txt generando el archivo [file_name]_combinado.po, dicho archivo deberá ser abierto y guardado con PoEdit para la generación del archivo ([file_name].mo).
 
-P.D.: Previa edición del archivo .po con PoEdit, es necesario reemplazar "\\\\" por "\\". Por falta de tiempo aún no llegué a corregir ese detalle.
+P.D.: Previa edición del archivo .po con PoEdit, es necesario reemplazar "\\\\" por "\\" del archivo resultante [file_name]_combinado.po. Por falta de tiempo aún no llegué a corregir ese detalle.
 
 _(Archivo .po original)_
 
