@@ -53,6 +53,23 @@ _(Archivo resultante de la combinacion de [file\_name].po y [file_name]\_traduci
 - Tener algún servidor web con PHP >=5 corriendo
 - Un archivo .po en la misma carpeta del script
 ```
+### Modo de uso 📋
+
+```
+1- Run al Apache (u otro server que estes corriendo)
+2- Colocar el archivo [file_name].po en la carpeta donde se encuentra extraer.php
+3- Acceder al link http://localhost/<carpeta_clonada>/extraer.php
+3.1- Esto genera 2 archivos. <file_name>_opt.po y <file_name_detached>.txt
+4- Copiar el archivo <file_name_detached>.txt a un hosting para ser accesible en internet, ejemplo http://<dominio>/file_name_detached.txt
+5- Ingresar a https://translate.google.com/ y pegar el link. Generalmente lado izquierdo texto o página origen, lado derecho, texto o página traducida
+6- Copiar texto traducido a un archivo <file_name>_traduccion.txt ¡¡Este paso es importante!!. El archivo debe tener la misma cantidad de líneas que el archivo detached. Eliminar la primera linea en blanco del archivo <file_name>_traduccion.txt si lo tuviere, a veces, al copiar de la página de Google, viene una linea en blanco.
+7- Acceder al link http://localhost/<carpeta_clonada>/combinar.php, lo que hace es combinar los archivos <file_name>_opt.po y <file_name>_traduccion.txt y genera <file_name>_combinado.po
+8- Renombrar <file_name>_combinado.po a <file_name>.po
+9- Abrir archivo <file_name>.po con un editor de texto, reemplazando las \\ por \, luego (guardar y cerrar).
+10- Abrir archivo <file_name>.po con PoEdit para afinar detalles. (Al guardar genera el archivo <file_name>.mo)
+11- Subir los archivos <file_name>.po y <file_name>.mo al destino correspondiente. Ejemplo https://<dominio>/wp-content/plugins/<nombre_plugin>/languagues/
+```
+
 ## Construido con 🛠️
 
 * [PHP] >= 5
