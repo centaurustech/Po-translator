@@ -25,19 +25,12 @@ function unificar_msgstr($i, $archivo){ //(5, es_ES.po)
             $acople = obtenerCadena($linea,"~","\"\r\n");
         }
 
-        
-
-
-
-
         $contador++; //7
 
         $linea = $archivo[$contador];
         $linea_br = nl2br($linea);
         $linea_sin_rn = preg_replace("/[\r\n|\n|\r]+/", "", $linea_br);
 
-        
-        
     }
 
     return array ($contador, $acople);
