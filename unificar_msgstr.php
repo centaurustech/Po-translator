@@ -17,12 +17,12 @@ function unificar_msgstr($i, $archivo){ //(5, es_ES.po)
 
         if (preg_match("/^(msgstr)/", $linea)){ 
         
-            $acople = obtenerCadena($linea,'msgstr "',"\"\r\n");
+            $acople .= obtenerCadena($linea,'msgstr "',"\"\r\n");
         
         } else if (preg_match("/^(\")/", $linea)){ 
         
             $linea = preg_replace( "/^(\")/", "~", $linea );
-            $acople = obtenerCadena($linea,"~","\"\r\n");
+            $acople .= obtenerCadena($linea,"~","\"\r\n");
         }
 
         $contador++; //7

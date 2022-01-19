@@ -16,12 +16,12 @@ $cond2 = substr($linea, 0, 12);
 
         if (preg_match("/^(msgid)/", $linea)){ 
         
-            $acople = obtenerCadena($linea,'msgid "',"\"\r\n");
+            $acople .= obtenerCadena($linea,'msgid "',"\"\r\n");
         
         } else if (preg_match("/^(\")/", $linea)){ 
         
             $linea = preg_replace( "/^(\")/", "~", $linea );
-            $acople = obtenerCadena($linea,"~","\"\r\n");
+            $acople .= obtenerCadena($linea,"~","\"\r\n");
         }
 
         // $acople = obtenerCadena($linea,'"','"\r\n');

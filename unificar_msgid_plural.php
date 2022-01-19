@@ -17,12 +17,12 @@ function unificar_msgid_plural($i, $arc){ //(5, hola2.po)
         
         if (preg_match("/^(msgid_plural)/", $linea)){ 
             
-            $acople = obtenerCadena($linea,'msgid_plural "',"\"\r\n");
+            $acople .= obtenerCadena($linea,'msgid_plural "',"\"\r\n");
         
         } else if (preg_match("/^(\")/", $linea)){ 
         
             $linea = preg_replace( "/^(\")/", "~", $linea );
-            $acople = obtenerCadena($linea,"~","\"\r\n");
+            $acople .= obtenerCadena($linea,"~","\"\r\n");
         }
         
         $contador++; //7

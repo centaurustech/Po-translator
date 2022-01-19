@@ -41,12 +41,14 @@ for($i=2; $i < $lineas_po; $i++){
         
         if($cond1 === "msgstr"){
 
+            $linea_po = htmlspecialchars_decode($linea_po);//+
             fwrite($archivo_po_combinado, $linea_po);//msgid
 
             $tipo_msgstr =  obtenerCadena($linea_s,"msgstr \"","\""); // >0
             $long = strlen($tipo_msgstr);
             if($long > 0){
                 //ya hay traduccion                
+                $linea_s = htmlspecialchars_decode($linea_s);
                 fwrite($archivo_po_combinado, $linea_s);
                 $cont1++;
                 $i++;
@@ -54,7 +56,7 @@ for($i=2; $i < $lineas_po; $i++){
             } else {
                 //si no hay traduccion -> traer traduccion
                 $msgstr = preg_replace("/[\r\n|\n|\r]+/", "", $archivo_txt[$cont1]);
-                $msgstr = htmlspecialchars_decode($msgstr);
+                $msgstr = htmlspecialchars_decode($msgstr);//+
                 fwrite($archivo_po_combinado, 'msgstr "'.$msgstr.'"'. PHP_EOL);
                 $cont1++;
                 $i++;
@@ -62,18 +64,25 @@ for($i=2; $i < $lineas_po; $i++){
 
         } else if ($cond2 === "msgid_plural"){
 
+            $linea_po = htmlspecialchars_decode($linea_po);//+
             fwrite($archivo_po_combinado, $linea_po);
+
+            $linea_s = htmlspecialchars_decode($linea_s);//+
             fwrite($archivo_po_combinado, $linea_s);
+
             $msgstr = preg_replace("/[\r\n|\n|\r]+/", "", $archivo_txt[$cont1]);
+            $msgstr = htmlspecialchars_decode($msgstr);//+
             fwrite($archivo_po_combinado, 'msgstr[0] "'.$msgstr.'"'. PHP_EOL);
             $cont1++;
             $msgstr = preg_replace("/[\r\n|\n|\r]+/", "", $archivo_txt[$cont1]);
+            $msgstr = htmlspecialchars_decode($msgstr);//+
             fwrite($archivo_po_combinado, 'msgstr[1] "'.$msgstr.'"'. PHP_EOL);
             $cont1++;
             $i = $i+3;
         }
 	} else {
             echo $linea_po."<br>";
+            $linea_po = htmlspecialchars_decode($linea_po);//+
             fwrite($archivo_po_combinado, $linea_po);
 	}
 }
