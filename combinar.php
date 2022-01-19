@@ -31,22 +31,34 @@ $cont1 = 0;
 for($i=2; $i < $lineas_po; $i++){
 	
 	$linea_po = $archivo_po[$i];
-	$msgid =  obtenerCadena($linea_po,'msgid "','"\r');
+	$msgid =  obtenerCadena($linea_po,"msgid \"","\"");
 
 	if(strlen($msgid) > 0){
 		
         $linea_s = $archivo_po[$i+1];
-        $cond1 = substr($linea_s, 0, 6);
-        $cond2 = substr($linea_s, 0, 12);
+        $cond1 = substr($linea_s, 0, 6); //msgstr
+        $cond2 = substr($linea_s, 0, 12); //msgid_plural
         
         if($cond1 === "msgstr"){
 
-		fwrite($archivo_po_combinado, $linea_po);
-        $msgstr = preg_replace("/[\r\n|\n|\r]+/", "", $archivo_txt[$cont1]);
-        $msgstr = htmlspecialchars_decode($msgstr);
-		fwrite($archivo_po_combinado, 'msgstr "'.$msgstr.'"'. PHP_EOL);
-		$cont1++;
-        $i++;
+            fwrite($archivo_po_combinado, $linea_po);//msgid
+
+            $tipo_msgstr =  obtenerCadena($linea_s,"msgstr \"","\""); // >0
+            $long = strlen($tipo_msgstr);
+            if($long > 0){
+                //ya hay traduccion                
+                fwrite($archivo_po_combinado, $linea_s);
+                $cont1++;
+                $i++;
+
+            } else {
+                //si no hay traduccion -> traer traduccion
+                $msgstr = preg_replace("/[\r\n|\n|\r]+/", "", $archivo_txt[$cont1]);
+                $msgstr = htmlspecialchars_decode($msgstr);
+                fwrite($archivo_po_combinado, 'msgstr "'.$msgstr.'"'. PHP_EOL);
+                $cont1++;
+                $i++;
+            }
 
         } else if ($cond2 === "msgid_plural"){
 

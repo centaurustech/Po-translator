@@ -13,10 +13,20 @@ $cond1 = substr($linea, 0, 6);
 $cond2 = substr($linea, 0, 12); 
 
     while (($cond1 <> 'msgstr') && ($cond2 <> 'msgid_plural')){
-                
-        $linea_filtrada = preg_replace("/[\r\n|\n|\r]+/", "", $linea);
-        $acople .= obtenerCadena($linea_filtrada,'"','"\r');
+
+        if (preg_match("/^(msgid)/", $linea)){ 
         
+            $acople = obtenerCadena($linea,'msgid "',"\"\r\n");
+        
+        } else if (preg_match("/^(\")/", $linea)){ 
+        
+            $linea = preg_replace( "/^(\")/", "~", $linea );
+            $acople = obtenerCadena($linea,"~","\"\r\n");
+        }
+
+        // $acople = obtenerCadena($linea,'"','"\r\n');
+        // $acople = preg_replace("/[\r\n|\n|\r]+/", "", $acople);
+
         $contador++; //7
         
         $linea = $arc[$contador]; // msgid_plural "Muchas "

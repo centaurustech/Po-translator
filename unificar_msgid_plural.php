@@ -12,8 +12,18 @@ $cond2 = substr($linea, 0, 12);
 
 while (($cond1 <> 'msgstr')){
             
-    $linea_filtrada = preg_replace("/[\r\n|\n|\r]+/", "", $linea);
-    $acople .= obtenerCadena($linea_filtrada,'"','"\r');
+    // $linea_filtrada = preg_replace("/[\r\n|\n|\r]+/", "", $linea);
+    // $acople .= obtenerCadena($linea_filtrada,'"','"\r');
+    
+    if (preg_match("/^(msgid_plural)/", $linea)){ 
+        
+        $acople = obtenerCadena($linea,'msgid_plural "',"\"\r\n");
+    
+    } else if (preg_match("/^(\")/", $linea)){ 
+    
+        $linea = preg_replace( "/^(\")/", "~", $linea );
+        $acople = obtenerCadena($linea,"~","\"\r\n");
+    }
     
     $contador++; //7
     
