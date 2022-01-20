@@ -1,5 +1,21 @@
 <?php 
 
+/*
+Usando como base teorica el trabajo realizado por Julio Sanchez en HelpTranslator
+https://jsbsan.blogspot.com/2015/02/helptranslator-herramienta-para-ayudar.html
+
+
+Lo migre a PHP
+
+Ronald Caetano
+Centaurus Technology®
+github.com/centaurustech
+Asunción, Paraguay
+
+Fase de combinación (texto original con texto traducido), ejecución posterior a extract.php
+
+*/
+
 include('unificar_msgid.php');
 include('unificar_msgstr.php');
 include('unificar_msgid_plural.php');
