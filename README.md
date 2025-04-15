@@ -85,7 +85,7 @@ Oimene nde roga lao ojeipuru la licencia che kavaju. (Libre como el viento)
 ## Expresiones de Gratitud 🎁
 
 * Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo (A mi). 
+* Invita una cerveza 🍺 o un café ☕ a alguien del equipo (https://buymeacoffee.com/commit.latam). 
 * Agradezco a Julio Sánchez por HelpTranslator, sin ello, estos scripts tardarían mucho tiempo en ver la luz🤓.
 
 ---
